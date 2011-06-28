@@ -139,15 +139,15 @@ int main(int argc, char **argv)
 	while ((ch = getopt(argc, argv, "a:A:t:n:N:G:Y:p:i:")) != -1) {
 		switch (ch) {
 		case 'a':
-			meta.artist = optarg;
+			meta.artist = String(optarg, String::UTF8);
 			meta.hasArtist = 1;
 			break;
 		case 'A':
-			meta.album = optarg;
+			meta.album = String(optarg, String::UTF8);
 			meta.hasAlbum = 1;
 			break;
 		case 't':
-			meta.title = optarg;
+			meta.title = String(optarg, String::UTF8);
 			meta.hasTitle = 1;
 			break;
 		case 'n':
@@ -159,11 +159,11 @@ int main(int argc, char **argv)
 			meta.hasTrackCount = 1;
 			break;
 		case 'G':
-			meta.genre = optarg;
+			meta.genre = String(optarg, String::UTF8);
 			meta.hasGenre = 1;
 			break;
 		case 'p':
-			meta.publisher = optarg;
+			meta.publisher = String(optarg, String::UTF8);
 			meta.hasPublisher = 1;
 			break;
 		case 'Y':

@@ -24,11 +24,12 @@ using namespace std;
 using namespace TagLib;
 
 struct Metadata {
-	String artist, album, title, genre, publisher;
+	String artist, album, albumartist, title, genre, publisher;
 	int trackNumber, trackCount, year;
 	ByteVector image;
 	int hasArtist : 1;
 	int hasAlbum : 1;
+	int hasAlbumArtist : 1;
 	int hasTitle : 1;
 	int hasGenre : 1;
 	int hasTrackNumber : 1;
@@ -47,6 +48,7 @@ void usage()
 	cout << "  -t <title>"   << endl;
 	cout << "  -a <artist>"  << endl;
 	cout << "  -A <album>"   << endl;
+	cout << "  -b <albumartist>"  << endl;
 	cout << "  -n <track number>" << endl;
 	cout << "  -N <track count>" << endl;
 	cout << "  -G <genre>"   << endl;
@@ -102,6 +104,9 @@ bool updateTags(char *path, Metadata *meta)
 	if (meta->hasAlbum) {
 		setTextFrame(tag, "TALB", meta->album);
 	}
+	if (meta->hasAlbumArtist) {
+		setTextFrame(tag, "TPE2", meta->albumartist);
+	}
 	if (meta->hasTitle) {
 		setTextFrame(tag, "TIT2", meta->title);
 	}
@@ -136,11 +141,15 @@ int main(int argc, char **argv)
 {
 	int ch;
 	Metadata meta;
-	while ((ch = getopt(argc, argv, "a:A:t:n:N:G:Y:p:i:")) != -1) {
+	while ((ch = getopt(argc, argv, "a:b:A:t:n:N:G:Y:p:i:")) != -1) {
 		switch (ch) {
 		case 'a':
 			meta.artist = String(optarg, String::UTF8);
 			meta.hasArtist = 1;
+			break;
+		case 'b':
+			meta.albumartist = String(optarg, String::UTF8);
+			meta.hasAlbumArtist = 1;
 			break;
 		case 'A':
 			meta.album = String(optarg, String::UTF8);

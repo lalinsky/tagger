@@ -64,16 +64,17 @@ void usage()
 	cout << "Usage: zvq-tagger <fields> <files>" << endl;
 	cout << endl;
 	cout << "Where the valid fields are:" << endl;
-	cout << "  -t <title>"   << endl;
-	cout << "  -a <artist>"  << endl;
-	cout << "  -A <album>"   << endl;
-	cout << "  -b <albumartist>"  << endl;
+	cout << "  -t <title>" << endl;
+	cout << "  -a <artist>" << endl;
+	cout << "  -A <album>" << endl;
+	cout << "  -b <album artist>" << endl;
 	cout << "  -n <track number>" << endl;
 	cout << "  -N <track count>" << endl;
-	cout << "  -G <genre>"   << endl;
-	cout << "  -Y <year>"    << endl;
-	cout << "  -p <publisher>"   << endl;
-	cout << "  -i <image>"   << endl;
+	cout << "  -G <genre>" << endl;
+	cout << "  -Y <year>" << endl;
+	cout << "  -p <publisher>" << endl;
+	cout << "  -i <image>" << endl;
+	cout << "  -x <frame>=<value> (e.g. TIT1=Grouping, TXXX=ASIN=B00000J6AG)" << endl;
 	cout << endl;
 
 	exit(1);
